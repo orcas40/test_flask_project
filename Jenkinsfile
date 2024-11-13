@@ -41,7 +41,7 @@ pipeline {
             }
             steps {
                 // Despliega la aplicación (Ejecuta Flask en modo producción)
-                sh 'source $VIRTUALENV/bin/activate && flask run --host=0.0.0.0 --port=5000'
+                sh '. $VIRTUALENV/bin/activate && flask run --host=0.0.0.0 --port=5000'
             }
         }
     }
