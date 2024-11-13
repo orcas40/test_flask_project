@@ -49,7 +49,14 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            sh 'deactivate || true'  // Desactiva el entorno virtual
+            script {
+            // Solo desactivar el entorno virtual si está activado
+            sh '''
+                if [ -n "$VIRTUAL_ENV" ]; then
+                    deactivate || true
+                fi
+            '''
+  	    }
         }
         success {
             echo 'Pipeline completed successfully!'
