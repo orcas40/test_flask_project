@@ -17,21 +17,21 @@ pipeline {
             steps {
                 // Instala virtualenv si es necesario y crea un entorno virtual
                 sh '/usr/bin/python3 -m venv $VIRTUALENV'
-                sh 'source $VIRTUALENV/bin/activate'
+                sh '. $VIRTUALENV/bin/activate'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 // Activa el entorno virtual y ejecuta pip install
-                sh 'source $VIRTUALENV/bin/activate && pip install -r requirements.txt'
+                sh '. $VIRTUALENV/bin/activate && pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Ejecuta las pruebas con pytest
-                sh 'source $VIRTUALENV/bin/activate && pytest tests/'
+                sh '. $VIRTUALENV/bin/activate && pytest tests/'
             }
         }
 
