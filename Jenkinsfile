@@ -52,11 +52,15 @@ pipeline {
             script {
             // Solo desactivar el entorno virtual si está activado
             sh '''
+                # Comprobar si la variable de entorno VIRTUAL_ENV existe y tiene un valor
                 if [ -n "$VIRTUAL_ENV" ]; then
+                    echo "Deactivating virtual environment"
                     deactivate || true
+                else
+                    echo "No virtual environment to deactivate"
                 fi
             '''
-  	    }
+            }
         }
         success {
             echo 'Pipeline completed successfully!'
