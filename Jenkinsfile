@@ -16,7 +16,7 @@ pipeline {
         stage('Set up Python Environment') {
             steps {
                 // Instala virtualenv si es necesario y crea un entorno virtual
-                sh '/opt/anaconda3/bin/python3 -m venv $VIRTUALENV'
+                sh '/usr/bin/python3 -m venv $VIRTUALENV'
                 sh 'source $VIRTUALENV/bin/activate'
             }
         }
