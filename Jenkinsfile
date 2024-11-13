@@ -8,15 +8,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clona el repositorio de código
-                git url: 'https://github.com/orcas40/test_flask_project.git', branch: 'main'
+                // Clona el repositorio de código desde GitHub
+                git url: 'https://github.com/orcas40/test_flask_project', branch: 'main'
             }
         }
         
         stage('Set up Python Environment') {
             steps {
                 // Instala virtualenv si es necesario y crea un entorno virtual
-                sh 'python3 -m venv $VIRTUALENV'
+                sh '/opt/anaconda3/bin/python3 -m venv $VIRTUALENV'
                 sh 'source $VIRTUALENV/bin/activate'
             }
         }
